@@ -5,17 +5,20 @@ from objects import Food
 import settings as sett
 import screen_modifications as sm
 
+
 def GameLoop():
     errors = pygame.init()[1]
     if errors > 0:
-        print(f'[!] Game had {errors} when starting, exiting...')
+        print(f"[!] Game had {errors} when starting, exiting...")
         sys.exit(-1)
     else:
-        print('[+] Successfully started game')
+        print("[+] Successfully started game")
 
     fps_controller = pygame.time.Clock()
-    game_window = pygame.display.set_mode((sett.SCREEN_WIDTH, sett.SCREEN_HEIGHT), 0, 32)
-    pygame.display.set_caption('Snake game')
+    game_window = pygame.display.set_mode(
+        (sett.SCREEN_WIDTH, sett.SCREEN_HEIGHT), 0, 32
+    )
+    pygame.display.set_caption("Snake game")
 
     surface = pygame.Surface(game_window.get_size())
     surface = surface.convert()
@@ -35,7 +38,7 @@ def GameLoop():
         else:
             if snake.get_head_position() == food.position:
                 snake.addCube(food)
-                pygame.display.set_caption(f'Snake game | Score: {snake.score}')
+                pygame.display.set_caption(f"Snake game | Score: {snake.score}")
             snake.draw(surface)
             food.draw(surface)
             game_window.blit(surface, (0, 0))
