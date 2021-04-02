@@ -38,7 +38,8 @@ def GameLoop():
         else:
             if snake.get_head_position() == food.position:
                 snake.addCube(food)
-                pygame.display.set_caption(f"Snake game | Score: {snake.score}")
+                pygame.display.set_caption(
+                    f"Snake game | Score: {snake.score}")
             snake.draw(surface)
             food.draw(surface)
             game_window.blit(surface, (0, 0))
